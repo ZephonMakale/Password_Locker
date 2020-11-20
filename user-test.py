@@ -2,7 +2,7 @@ import unittest #Imports the unittest module.
 from user import User  #Imports the user class.
 
 
-class TestUser(unittest, TestCase): # Creates a subclass known as TestUser.
+class TestUser(unittest.TestCase): # Creates a subclass known as TestUser.
     """
     Test class that defines test cases for the Users class behaviours.
 
@@ -25,3 +25,5 @@ class TestUser(unittest, TestCase): # Creates a subclass known as TestUser.
         self.assertEqual(self.new_users.password, "1234xyz")
         
     
+if __name__ == '__main__':
+    unittest.main()
