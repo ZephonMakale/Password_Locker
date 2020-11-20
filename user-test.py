@@ -1,5 +1,6 @@
 import unittest #Imports the unittest module.
 from user import User  #Imports the user class.
+from credentials import Credentials 
 
 
 class TestUser(unittest.TestCase): # Creates a subclass known as TestUser.
@@ -32,6 +33,65 @@ class TestUser(unittest.TestCase): # Creates a subclass known as TestUser.
         self.new_users.save_users() # saving the new user
         self.assertEqual(len(User.user_list), 1)
 
+class TestCredentials(unittest.TestCase):
+    """
+    Test class that defines test cases for the Users class behaviours.
+    """
+
+    def setUp(self):
+        """
+        Set up method to run before each test cases.
+        """
+        self.new_credentials = Credentials("gmail", "Zephon Makale", "1234xyz")
     
+    def test_init(self):
+        """
+        test_init: test case to test if the object is initialized properly.
+        """
+        self.assertEqual(self.new_credentials.account, "gmail")
+        self.assertEqual(self.new_credentials.usernames, "Zephon Makale")
+        self.assertEqual(self.new_credentials.password, "1234xyz")
+
+    def save_credential_test(self):
+        """
+        test_save_credential test case tests if the user object is saved into the credentials list.
+        """
+
+        self.new_credentials.save_attributes()
+        self.assertEqual(len(Credentials.credentials_list), 1)
+    
+    def tearDown(self):
+        """
+        tearDown method that does clean up after each test case has run
+        """
+        Credentials.credentials_list = []
+
+    def test_save_multiple_accounts(self):
+        """
+        test_save_multiple_accounts to check if we can save multiple credentials objects
+        to our credentials_list
+        """
+        self.new_credentials.save_attributes()
+        test_credential = Credentials("twitter", "@zephonmakale", "123456")
+        test_credential.save_attributes()
+        self.assertEqual(len(Credentials.credentials_list), 2)
+
+    def test_delete_credentials(self):
+        """
+        test_delete_credentials to test if we can remove a contact from our credential list
+        """
+
+        self.new_credentials.save_attributes()
+        test_credential = Credentials("twitter", "`@zephonmakale", "123456")
+        test_credential.save_attributes()
+
+        self.new_credentials.delete_credentials()
+        self.assertEqual(len(Credentials.credentials_list), 1)
+          
+        
+
+        
+
+
 if __name__ == '__main__':
     unittest.main()
