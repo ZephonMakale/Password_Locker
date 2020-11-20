@@ -3,7 +3,7 @@ class User:
     Creates a user class that generates new intances of the User.
     """
 
-    user_list[]
+    user_list = []
 
     def __init__(self, username, password):
 
@@ -13,5 +13,4 @@ class User:
 
         self.username = username
         self.password = password
-    
     
