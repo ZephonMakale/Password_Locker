@@ -23,7 +23,15 @@ class TestUser(unittest.TestCase): # Creates a subclass known as TestUser.
 
         self.assertEqual(self.new_users.username, "Zephon Makale")
         self.assertEqual(self.new_users.password, "1234xyz")
-        
+    
+    def test_save_users(self):
+        """
+        test_save_users test case tests if the user object is saved into the user list.
+        """
+
+        self.new_users.save_users() # saving the new user
+        self.assertEqual(len(User.user_list), 1)
+
     
 if __name__ == '__main__':
     unittest.main()
