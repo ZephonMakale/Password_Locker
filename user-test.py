@@ -72,7 +72,7 @@ class TestCredentials(unittest.TestCase):
         to our credentials_list
         """
         self.new_credentials.save_attributes()
-        test_credential = Credentials("twitter", "@zephonmakale", "123456")
+        test_credential = Credentials("Instagram", "@zephonmakale", "123456")
         test_credential.save_attributes()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
@@ -82,12 +82,41 @@ class TestCredentials(unittest.TestCase):
         """
 
         self.new_credentials.save_attributes()
-        test_credential = Credentials("twitter", "`@zephonmakale", "123456")
+        test_credential = Credentials("Instagram", "@zephonmakale", "123456")
         test_credential.save_attributes()
 
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.credentials_list), 1)
-          
+
+    def test_find_credentials(self):
+        """
+        test to check if we can find a credential by account name and display information of the credential
+        """
+        self.new_credentials.save_attributes()
+        test_credential = Credentials()
+        test_credential.save_attributes()
+
+        found_credential = Credentials.find_credential("Instagram")
+
+        self.assertEqual(found_credential.account, test_credential.account)
+
+    def test_credential_exist(self):
+        """
+        test to check if we can return a boolean, if we don't find the credential
+        """
+        self.new_credentials.save_attributes()
+        found_credential = Credentials("Instagram", "@zephonmakale", "123456" )
+        found_credential.save_attributes()
+
+        credential_exist = Credentials.if_credential_exist("Instagram")
+        self.assertEqual(credential_exist)
+
+    def test_dispaly_all_credentials(self):
+        """
+        method that returns a list of all credentials saved by the user
+        """
+
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
         
 
         
