@@ -1,6 +1,6 @@
 import unittest #Imports the unittest module.
 from user import User  #Imports the user class.
-from credentials import Credentials 
+from user import Credentials
 
 
 class TestUser(unittest.TestCase): # Creates a subclass known as TestUser.
@@ -118,9 +118,5 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
         
-
-        
-
-
 if __name__ == '__main__':
     unittest.main()
