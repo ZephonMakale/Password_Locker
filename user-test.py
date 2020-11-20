@@ -93,25 +93,25 @@ class TestCredentials(unittest.TestCase):
         test to check if we can find a credential by account name and display information of the credential
         """
         self.new_credentials.save_attributes()
-        test_credential = Credentials()
+        test_credential = Credentials("Instagram", "@zephonmakale", "123456")
         test_credential.save_attributes()
 
-        found_credential = Credentials.find_credential("Instagram")
+        found_credential = Credentials.find_credentials("Instagram")
 
         self.assertEqual(found_credential.account, test_credential.account)
 
-    def test_credential_exist(self):
+    def test_credential_exists(self):
         """
         test to check if we can return a boolean, if we don't find the credential
         """
         self.new_credentials.save_attributes()
-        found_credential = Credentials("Instagram", "@zephonmakale", "123456" )
-        found_credential.save_attributes()
+        test_credential = Credentials("Instagram", "@zephonmakale", "123456" )
+        test_credential.save_attributes()
 
-        credential_exist = Credentials.if_credential_exist("Instagram")
-        self.assertEqual(credential_exist)
+        credential_exist = Credentials.credentials_exist("Instagram")
+        self.assertTrue(credential_exist)
 
-    def test_dispaly_all_credentials(self):
+    def test_display_all_credentials(self):
         """
         method that returns a list of all credentials saved by the user
         """
