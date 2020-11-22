@@ -30,6 +30,9 @@ def login_user(username, password):
     return confirm_user
 
 def create_new_credential(account, usernames, passwords):
+    """
+    create new credential function allows to create their account.
+    """
     new_credential = Credentials(account, usernames, passwords)
     return new_credential
 
