@@ -46,7 +46,7 @@ def check_credentials(account):
     return Credentials.credentials_exist(account)
 
 def generate_passwords():
-    generated_password = Credentials.generate_password(stringlength=6)
+    generated_password = Credentials.generate_password(None)
     return generated_password
 
 def copy_password(account):
