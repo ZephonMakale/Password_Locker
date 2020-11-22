@@ -37,6 +37,9 @@ def create_new_credential(account, usernames, passwords):
     return new_credential
 
 def save_credential(credentials):
+    """
+    save credential function allows the user save their credentials into their account.
+    """
     credentials.save_attributes()
 
 def display_all_account_details():
