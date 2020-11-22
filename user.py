@@ -56,13 +56,13 @@ class Credentials():
         return x_user
 
 
-    def __init__(self, account, usernames, password):
+    def __init__(self, account, usernames, passwords):
         """
         this function method defines user credentials
         """
         self.account = account
         self.usernames = usernames
-        self.password = password
+        self.passwords = passwords
 
     def save_attributes(self):
         """
@@ -88,7 +88,7 @@ class Credentials():
     @classmethod
     def copy_password(cls, account):
         found_credentials = Credentials.find_credentials(account)
-        pyperclip.copy(found_credentials.password)    
+        pyperclip.copy(found_credentials.passwords)    
 
 
     @classmethod
@@ -109,7 +109,7 @@ class Credentials():
         """
         return cls.credentials_list
 
-    def generate_password(length): #Generate a random password string of letters, digits and special character"
+    def generate_password(self, stringlength=6): #Generate a random password string of letters, digits and special character"
         password = string.ascii_uppercase + string.ascii_lowercase + "!@#$%&*"
-        result_str = ''.join(random.choice(password) for i in range(length))
+        result_str = ''.join(random.choice(password) for i in range(int(stringlength)))
         return result_str    

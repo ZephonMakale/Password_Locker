@@ -50,7 +50,7 @@ class TestCredentials(unittest.TestCase):
         """
         self.assertEqual(self.new_credentials.account, "gmail")
         self.assertEqual(self.new_credentials.usernames, "Zephon Makale")
-        self.assertEqual(self.new_credentials.password, "1234xyz")
+        self.assertEqual(self.new_credentials.passwords, "1234xyz")
 
     def save_credential_test(self):
         """
