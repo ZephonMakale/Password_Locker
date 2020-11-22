@@ -23,6 +23,9 @@ def display_user():
     return User.display_user()
 
 def login_user(username, password):
+    """
+    login user function allows the user to log into their account.
+    """
     confirm_user = Credentials.user_verification(username, password)
     return confirm_user
 
